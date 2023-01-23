@@ -13,7 +13,13 @@ function App() {
       <div className={classes.app}>
         <div className={classes.box}>
           <h1> Resizing Box Animation</h1>
-          <button onClick={() => setExpand(expand + 1)}>Toggle</button>
+          <div className={classes.buttonGroup}>
+            <button onClick={() => setExpand(expand + 1)}>Toggle</button>
+            <div className={classes.input}>
+              <input type="checkbox" id="c" />
+              <label htmlFor="c">Carosule</label>
+            </div>
+          </div>
           <ResizeAble>
             {expand % 3 === 2 ? (
               <p>

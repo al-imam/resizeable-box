@@ -27,18 +27,15 @@ function ResizeAble({ children }: { children: React.ReactNode }) {
         <motion.div
           key={JSON.stringify(children, circular())}
           initial={{
-            // opacity: 0,
-            x: 444,
+            opacity: 0,
           }}
           animate={{
-            x: 0,
-            // opacity: 1,
-            // transition: { duration: duration / 2, delay: duration / 2 },
+            opacity: 1,
+            transition: { duration: duration / 2, delay: duration / 2 },
           }}
           exit={{
-            x: -444,
-            // opacity: 0,
-            // transition: { duration: duration / 2 },
+            opacity: 0,
+            transition: { duration: duration / 2 },
           }}
           style={{ position: height ? "absolute" : "relative" }}
         >
