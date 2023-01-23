@@ -1,9 +1,11 @@
 import { motion, MotionConfig } from "framer-motion";
+import useMeasure from "react-use-measure";
 import { useState } from "react";
 import classes from "./app.module.css";
 
 function App() {
   const [expand, setExpand] = useState(false);
+  const [ref, { height }] = useMeasure();
 
   return (
     <MotionConfig transition={{ duration: 1 }}>
@@ -11,17 +13,15 @@ function App() {
         <div className={classes.box}>
           <h1>Hello</h1>
           <button onClick={() => setExpand(!expand)}>Toggle</button>
-          <motion.div
-            key={JSON.stringify(expand)}
-            initial={{ height: 0 }}
-            animate={{ height: "auto" }}
-          >
-            <div>
+          <motion.div animate={{ height }}>
+            <div ref={ref}>
               {expand ? (
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
                   ipsum in ducimus fugit dolore reiciendis reprehenderit
-                  corrupti molestiae illum facilis!
+                  corrupti molestiae illum facilis! Lorem ipsum dolor, sit amet
+                  consectetur adipisicing elit. Placeat, et. Praesentium facilis
+                  accusantium cum eum esse, eius ipsum error vel.
                 </p>
               ) : (
                 <p>Lorem, ipsum dolor.</p>
