@@ -3,7 +3,7 @@ import { useState } from "react";
 import classes from "./app.module.css";
 import ResizeAble from "./ResizeAble";
 
-export const duration = 0.5;
+export const duration = 0.75;
 
 function App() {
   const [expand, setExpand] = useState(0);
@@ -12,7 +12,7 @@ function App() {
     <MotionConfig transition={{ duration }}>
       <div className={classes.app}>
         <div className={classes.box}>
-          <h1>Hello</h1>
+          <h2>Carousel animation</h2>
           <button onClick={() => setExpand(expand + 1)}>Toggle</button>
           <ResizeAble>
             {expand % 3 === 2 ? (
