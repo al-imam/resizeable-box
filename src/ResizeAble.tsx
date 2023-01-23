@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
 import useMeasure from "react-use-measure";
 
@@ -18,14 +18,18 @@ function ResizeAble({ children }: { children: React.ReactNode }) {
   const [ref, { height }] = useMeasure();
 
   return (
-    <motion.div animate={{ height }}>
-      <motion.div
-        key={JSON.stringify(children, circular())}
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-      >
-        <div ref={ref}>{children}</div>
-      </motion.div>
+    <motion.div animate={{ height }} style={{ position: "relative" }}>
+      <AnimatePresence>
+        <motion.div
+          key={JSON.stringify(children, circular())}
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0 }}
+          style={{ position: "absolute" }}
+        >
+          <div ref={ref}>{children}</div>
+        </motion.div>
+      </AnimatePresence>
     </motion.div>
   );
 }
