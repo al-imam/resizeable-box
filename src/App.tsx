@@ -3,10 +3,11 @@ import { useState } from "react";
 import classes from "./app.module.css";
 import ResizeAble from "./ResizeAble";
 
-export const duration = 1;
+export const duration = 0.75;
 
 function App() {
   const [expand, setExpand] = useState(0);
+  const [c, setC] = useState(false);
 
   return (
     <MotionConfig transition={{ duration }}>
@@ -16,11 +17,16 @@ function App() {
           <div className={classes.buttonGroup}>
             <button onClick={() => setExpand(expand + 1)}>Toggle</button>
             <div className={classes.input}>
-              <input type="checkbox" id="c" />
+              <input
+                type="checkbox"
+                id="c"
+                checked={c}
+                onChange={(e) => setC(e.target.checked)}
+              />
               <label htmlFor="c">Carosule</label>
             </div>
           </div>
-          <ResizeAble>
+          <ResizeAble c={c}>
             {expand % 3 === 2 ? (
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.

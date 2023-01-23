@@ -15,8 +15,14 @@ const circular = () => {
   };
 };
 
-function ResizeAble({ children }: { children: React.ReactNode }) {
-  const [ref, { height }] = useMeasure();
+function ResizeAble({
+  children,
+  c,
+}: {
+  children: React.ReactNode;
+  c: boolean;
+}) {
+  const [ref, { height, width }] = useMeasure();
 
   return (
     <motion.div
@@ -26,18 +32,30 @@ function ResizeAble({ children }: { children: React.ReactNode }) {
       <AnimatePresence initial={false}>
         <motion.div
           key={JSON.stringify(children, circular())}
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-            transition: { duration: duration / 2, delay: duration / 2 },
-          }}
-          exit={{
-            opacity: 0,
-            transition: { duration: duration / 2 },
-          }}
-          style={{ position: height ? "absolute" : "relative" }}
+          initial={
+            c
+              ? { x: width + 50 }
+              : {
+                  opacity: 0,
+                }
+          }
+          animate={
+            c
+              ? { x: 0 }
+              : {
+                  opacity: 1,
+                  transition: { duration: duration / 2, delay: duration / 2 },
+                }
+          }
+          exit={
+            c
+              ? { x: -width - 50 }
+              : {
+                  opacity: 0,
+                  transition: { duration: duration / 2 },
+                }
+          }
+          style={{ position: height ? "absolute" : "relative", width: "100%" }}
         >
           <div ref={ref}>{children}</div>
         </motion.div>
