@@ -21,10 +21,12 @@ function App() {
           )}
         </div>
       </div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam nihil laborum
-      dolore recusandae hic. Enim vero repellat molestias modi labore voluptas
-      totam voluptatem, quae, eveniet iusto aliquam reprehenderit exercitationem
-      laborum?
+      <p className={classes.p}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam nihil
+        laborum dolore recusandae hic. Enim vero repellat molestias modi labore
+        voluptas totam voluptatem, quae, eveniet iusto aliquam reprehenderit
+        exercitationem laborum?
+      </p>
     </div>
   );
 }
