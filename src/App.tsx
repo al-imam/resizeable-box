@@ -3,17 +3,29 @@ import { useState } from "react";
 import classes from "./app.module.css";
 import ResizeAble from "./ResizeAble";
 
+export const duration = 0.5;
+
 function App() {
-  const [expand, setExpand] = useState(false);
+  const [expand, setExpand] = useState(0);
 
   return (
-    <MotionConfig transition={{ duration: 1 }}>
+    <MotionConfig transition={{ duration }}>
       <div className={classes.app}>
         <div className={classes.box}>
           <h1>Hello</h1>
-          <button onClick={() => setExpand(!expand)}>Toggle</button>
+          <button onClick={() => setExpand(expand + 1)}>Toggle</button>
           <ResizeAble>
-            {expand ? (
+            {expand % 3 === 2 ? (
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Mollitia, doloremque repellendus! Voluptas odio consequuntur
+                distinctio repellendus voluptatem sapiente sint tempora
+                exercitationem aperiam ea iure eum repudiandae cum dolore
+                suscipit autem, odit consectetur quisquam non, pariatur quam,
+                nam iusto assumenda? Iure libero quos dolorem amet beatae velit
+                suscipit quasi voluptas necessitatibus.
+              </p>
+            ) : expand % 3 === 1 ? (
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
                 ipsum in ducimus fugit dolore reiciendis reprehenderit corrupti
