@@ -4,10 +4,10 @@ import classes from "./app.module.css";
 function App() {
   return (
     <div className={classes.app}>
-      <motion.div
-        whileHover={{ scale: 1.1, filter: "brightness(1.5)" }}
-        className={classes.center}
-      ></motion.div>
+      <div className={classes.box}>
+        <h1>Hello</h1>
+        <button>Toggle</button>
+      </div>
     </div>
   );
 }
