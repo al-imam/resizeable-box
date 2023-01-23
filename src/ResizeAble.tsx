@@ -19,13 +19,13 @@ function ResizeAble({ children }: { children: React.ReactNode }) {
 
   return (
     <motion.div animate={{ height }} style={{ position: "relative" }}>
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         <motion.div
           key={JSON.stringify(children, circular())}
           animate={{ opacity: 1 }}
           initial={{ opacity: 0 }}
           exit={{ opacity: 0 }}
-          style={{ position: "absolute" }}
+          style={{ position: height ? "absolute" : "relative" }}
         >
           <div ref={ref}>{children}</div>
         </motion.div>
