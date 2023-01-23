@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { motion } from "framer-motion";
 import classes from "./app.module.css";
 
 function App() {
   return (
     <div className={classes.app}>
-      <div className={classes.center}></div>
+      <motion.div
+        whileHover={{ scale: 1.1, filter: "brightness(1.5)" }}
+        className={classes.center}
+      ></motion.div>
     </div>
   );
 }
