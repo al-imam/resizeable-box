@@ -1,11 +1,10 @@
-import { motion, MotionConfig } from "framer-motion";
-import useMeasure from "react-use-measure";
+import { MotionConfig } from "framer-motion";
 import { useState } from "react";
 import classes from "./app.module.css";
+import ResizeAble from "./ResizeAble";
 
 function App() {
   const [expand, setExpand] = useState(false);
-  const [ref, { height }] = useMeasure();
 
   return (
     <MotionConfig transition={{ duration: 1 }}>
@@ -13,21 +12,19 @@ function App() {
         <div className={classes.box}>
           <h1>Hello</h1>
           <button onClick={() => setExpand(!expand)}>Toggle</button>
-          <motion.div animate={{ height }}>
-            <div ref={ref}>
-              {expand ? (
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-                  ipsum in ducimus fugit dolore reiciendis reprehenderit
-                  corrupti molestiae illum facilis! Lorem ipsum dolor, sit amet
-                  consectetur adipisicing elit. Placeat, et. Praesentium facilis
-                  accusantium cum eum esse, eius ipsum error vel.
-                </p>
-              ) : (
-                <p>Lorem, ipsum dolor.</p>
-              )}
-            </div>
-          </motion.div>
+          <ResizeAble>
+            {expand ? (
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+                ipsum in ducimus fugit dolore reiciendis reprehenderit corrupti
+                molestiae illum facilis! Lorem ipsum dolor, sit amet consectetur
+                adipisicing elit. Placeat, et. Praesentium facilis accusantium
+                cum eum esse, eius ipsum error vel.
+              </p>
+            ) : (
+              <p>Lorem, ipsum dolor.</p>
+            )}
+          </ResizeAble>
         </div>
         <p className={classes.p}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam nihil
